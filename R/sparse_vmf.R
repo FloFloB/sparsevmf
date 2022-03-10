@@ -1,16 +1,22 @@
-## packages
-## require(wordspace)
-## require(skmeans)
-## require(aricode)
-
-#' Provides a simple function to build and fit a penalized mixtures of von Mises-Fisher to calculate the beta path.
+#' Provides a function to build and fit a penalized mixtures of von Mises-Fisher.
 #' @import wordspace
 #' @import skmeans
 #' @import aricode
 #' @param X Data : matrix with column as features
-#' @param K The number of mixture compoenents (or clusters).
-#' @param maxiter  max_iter: the maximum number of iteration
-#' @param beta penalty parameter.
+#' @param K The number of mixture components (or clusters).
+#' @param beta Penalty parameter.
+#' @param Theta Theta is the initial parameter list.
+#' @param shared_kappa If all components share kappa or not.
+#' @param restart Number of restart.
+#' @param maxiter The maximum number of iteration.
+#' @param maxiterfp The maximum number of iteration for the fix poit strategy.
+#' @param prec Precision.
+#' @param kappamax Kappa max value.
+#' @param mode Method to initialize: "random", "spread", "skmeans".
+#' @param sk_runs Number of runs for the initialization for skmeans.
+#' @param save_tau Save tau.
+#' @param hard_assign Hard assignment.
+#' @param verbose Verbose.
 #' @md
 #' @return returns a list including the following attributes:
 #' * theta: mu times kappa.
