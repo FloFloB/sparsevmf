@@ -363,3 +363,105 @@ movMF_IC <- function(movMR_res, prec=sqrt(.Machine$double.eps)) {
        vEBIC=-2*movMR_res$logLikelihood + (nb_mu_param_non_all_zero + kap) * (log(n)+log(d)),
        counts=list(nb_non_zero=nb_mu_param_non_zero, nb_non_all_zero=nb_mu_param_non_all_zero))
 }
+
+## thresholding
+movMF_threshold <- function(X, movMFResults, beta,
+                            prec=sqrt(.Machine$double.eps)) {
+  if(is.null(movMFResults$Tau)) {
+    Tau <- movMF_soft_assign_internal(X, movMFResults$kappa, movMFResults$mu, movMFResults$alpha)$Tau
+  } else {
+    Tau <- movMFResults$Tau
+  }
+  R <- crossprod(Tau, X)
+  R_abs <- abs(R)
+  premu <- movMFResults$kappa*R_abs - beta
+  premu[premu<=prec] <- 0
+  premu <- premu*sign(R)
+  wordspace::normalize.rows(premu)
+}
+
+movMF_extract_stats <- function(movMFResults) {
+  res <- movMFResults
+  res[c("mu", "alpha", "Tau", "kappa", "logL")] <- NULL
+  res
+}
+
+keep_best_IC <- function(model, current, save_tau) {
+  if(is.null(current)) {
+    the_models <- list()
+    criteria <- setdiff(names(model$IC), "counts")
+    if(!save_tau) {
+      model$Tau <- NULL
+    }
+    for(cr in criteria) {
+      the_models[[cr]] <- model
+    }
+    list(IC=model$IC[criteria], models=the_models)
+  } else {
+    for(cr in names(current$IC)) {
+      if(model$IC[[cr]] < current$IC[[cr]]) {
+        current$models[[cr]] <- model
+        current$IC[[cr]] <- model$IC[[cr]]
+        if(!save_tau) {
+          current$models[[cr]]$Tau <- NULL
+        }
+      }
+    }
+    current
+  }
+}
+
+
+## extract more statistics from a model
+movMF_extract_stats_gt <- function(movMFResults, membership) {
+  res <- movMFResults
+  res[c("mu", "alpha", "Tau", "kappa", "logL")] <- NULL
+  res$ARI <- aricode::ARI(res$cluster, membership)
+  res$NMI <- aricode::NMI(res$cluster, membership)
+  res
+}
+
+movMF_extract_stats_ground_truth <- function(membership) {
+  function(movMFResults) {
+    movMF_extract_stats_gt(movMFResults, membership)
+  }
+}
+
+
+## extract information from a path
+movMF_path_summary <- function(movMFPath, with_gt=FALSE) {
+  if(with_gt) {
+    extractor <- function(x) {
+      IC <- x$IC
+      c(x$beta, x$logLikelihood, x$penLogLikelihood, x$ARI,
+        x$NMI,
+        x$sparsity, x$iter, x$fpiter, x$status,
+        unlist(IC[1:(length(IC)-1)]), unlist(IC[["counts"]])
+      )
+    }
+    the_names <- c("beta", "logLikelihood", "penLogLikelihood",
+                   "ARI", "NMI", "sparsity", "iterations",
+                   "internal_iterations", "status")
+  } else {
+    extractor <- function(x) {
+      IC <- x$IC
+      c(x$beta, x$logLikelihood, x$penLogLikelihood,
+        x$sparsity, x$iter, x$fpiter, x$status,
+        unlist(IC[1:(length(IC)-1)]), unlist(IC[["counts"]])
+      )
+    }
+    the_names <- c("beta", "logLikelihood", "penLogLikelihood",
+                   "sparsity", "iterations",
+                   "internal_iterations", "status")
+  }
+  pre_res <- as.data.frame(t(sapply(movMFPath, extractor)))
+  pre_names <- names(pre_res)
+  pre_names[seq_along(the_names)] <- the_names
+  names(pre_res) <- pre_names
+  for(cl in c("iterations", "internal_iterations", "status",
+              "nb_non_zero", "nb_non_all_zero")) {
+    pre_res[[cl]] <- as.integer(pre_res[[cl]])
+  }
+  pre_res
+}
+
