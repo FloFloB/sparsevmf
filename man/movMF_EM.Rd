@@ -69,32 +69,28 @@ returns a list including the following attributes:
 \item penLogLikelihood: best penalized LogLikelihood.
 \item completeLogLikelihood: best complete LogLikelihood.
 \item status:
-}
 \itemize{
 \item 0: converged,
 \item 1: maxiter reached,
 \item 2: not converging to a K cluster solution,
 \item 3: infinite variance.
 }
-\itemize{
 \item n: number of rows of X.
 \item cluster: hard assignment.
 \item converged: nb of status converged.
 \item infinite: nb of status infinite.
 \item empty: nb of status not converging to a K cluster solution.
-\item itermax:
-\item total_iterations:
-\item total_internal_iterations:
-\item all_logLikelihood:
-\item all_penLogLikelihood:
+\item itermax: iter maximum.
+\item total_iterations: nb total iteration.
+\item total_internal_iterations: nb total iteration for fix point strategy.
+\item all_logLikelihood: all log Likelihood.
+\item all_penLogLikelihood: all penalized log Likelihood.
 \item IC: List of Information criteria BIC, AIC, RIC, RICc, EBIC with :
-}
 \itemize{
-\item d: stands for dense calculation,
+\item d: we keep all parameters,
 \item z: we count non zero values per directional mean and keep at least one parameter,
 \item v: we count the variables with at least one non zero coordinate on a directional mean.
 }
-\itemize{
 \item sparsity: sparsity of mu.
 }
 }

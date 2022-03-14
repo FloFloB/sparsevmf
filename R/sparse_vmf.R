@@ -2,6 +2,8 @@
 #' @import wordspace
 #' @import skmeans
 #' @import aricode
+#' @import movMF
+#' @import Matrix
 #' @param X Data : matrix with column as features
 #' @param K The number of mixture components (or clusters).
 #' @param beta Penalty parameter.
@@ -32,24 +34,24 @@
 #' * penLogLikelihood: best penalized LogLikelihood.
 #' * completeLogLikelihood: best complete LogLikelihood.
 #' * status:
-#'  + 0: converged,
-#'  + 1: maxiter reached,
-#'  + 2: not converging to a K cluster solution,
-#'  +  3: infinite variance.
+#'      + 0: converged,
+#'      + 1: maxiter reached,
+#'      + 2: not converging to a K cluster solution,
+#'      + 3: infinite variance.
 #'  * n: number of rows of X.
 #'  * cluster: hard assignment.
 #'  * converged: nb of status converged.
 #'  * infinite: nb of status infinite.
 #'  * empty: nb of status not converging to a K cluster solution.
-#'  * itermax:
-#'  * total_iterations:
-#'  * total_internal_iterations:
-#'  * all_logLikelihood:
-#'  * all_penLogLikelihood:
+#'  * itermax: iter maximum.
+#'  * total_iterations: nb total iteration.
+#'  * total_internal_iterations: nb total iteration for fix point strategy.
+#'  * all_logLikelihood: all log Likelihood.
+#'  * all_penLogLikelihood: all penalized log Likelihood.
 #'  * IC: List of Information criteria BIC, AIC, RIC, RICc, EBIC with :
-#'  + d: stands for dense calculation,
-#'  + z: we count non zero values per directional mean and keep at least one parameter,
-#'  + v: we count the variables with at least one non zero coordinate on a directional mean.
+#'      + d: we keep all parameters,
+#'      + z: we count non zero values per directional mean and keep at least one parameter,
+#'      + v: we count the variables with at least one non zero coordinate on a directional mean.
 #'  * sparsity: sparsity of mu.
 
 #' @export
