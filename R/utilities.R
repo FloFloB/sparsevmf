@@ -354,9 +354,9 @@ movMF_IC <- function(movMR_res, prec=sqrt(.Machine$double.eps)) {
        dRIC=-2*movMR_res$logLikelihood + (nb_mu_param_theo + kap) * 2*log(d),
        zRIC=-2*movMR_res$logLikelihood + (nb_mu_param_non_zero + kap) * 2*log(d),
        vRIC=-2*movMR_res$logLikelihood + (nb_mu_param_non_all_zero + kap) * 2*log(d),
-       dRRIC=-2*movMR_res$logLikelihood + (nb_mu_param_theo + kap) * 2*(log(d)+log(log(d))),
-       zRRIC=-2*movMR_res$logLikelihood + (nb_mu_param_non_zero + kap) * 2*(log(d)+log(log(d))),
-       vRRIC=-2*movMR_res$logLikelihood + (nb_mu_param_non_all_zero + kap) *
+       dRICc=-2*movMR_res$logLikelihood + (nb_mu_param_theo + kap) * 2*(log(d)+log(log(d))),
+       zRICc=-2*movMR_res$logLikelihood + (nb_mu_param_non_zero + kap) * 2*(log(d)+log(log(d))),
+       vRICc=-2*movMR_res$logLikelihood + (nb_mu_param_non_all_zero + kap) *
          2*(log(d)+log(log(d))),
        dEBIC=-2*movMR_res$logLikelihood + (nb_mu_param_theo + kap) * (log(n)+log(d)),
        zEBIC=-2*movMR_res$logLikelihood + (nb_mu_param_non_zero + kap) * (log(n)+log(d)),

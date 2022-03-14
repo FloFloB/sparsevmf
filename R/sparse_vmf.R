@@ -14,17 +14,43 @@
 #' @param kappamax Kappa max value.
 #' @param mode Method to initialize: "random", "spread", "skmeans".
 #' @param sk_runs Number of runs for the initialization for skmeans.
-#' @param save_tau Save tau.
+#' @param save_tau Save responsibilities Tau.
 #' @param hard_assign Hard assignment.
 #' @param verbose Verbose.
 #' @md
 #' @return returns a list including the following attributes:
-#' * theta: mu times kappa.
-#' * kappa : kappa
-#' * L: log likelihood.
-#' * alpha: a vector of cluster proportions.
-#' * iter: the total number of iteration needed for convergence.
-#' * Prob: matrix of probability to be in a cluster
+#' * mu: directional means.
+#' * alpha: mixture proportions.
+#' * kappa: concentration parameters.
+#' * Tau: responsibilities.
+#' * shared_kappa: TRUE if the model shares kappa.
+#' * beta: penalty parameter.
+#' * logL: Log-likelihood.
+#' * fpiter: fix point iterations.
+#' * iter: iterations.
+#' * logLikelihood: best LogLikelihood.
+#' * penLogLikelihood: best penalized LogLikelihood.
+#' * completeLogLikelihood: best complete LogLikelihood.
+#' * status:
+#'  + 0: converged,
+#'  + 1: maxiter reached,
+#'  + 2: not converging to a K cluster solution,
+#'  +  3: infinite variance.
+#'  * n: number of rows of X.
+#'  * cluster: hard assignment.
+#'  * converged: nb of status converged.
+#'  * infinite: nb of status infinite.
+#'  * empty: nb of status not converging to a K cluster solution.
+#'  * itermax:
+#'  * total_iterations:
+#'  * total_internal_iterations:
+#'  * all_logLikelihood:
+#'  * all_penLogLikelihood:
+#'  * IC: List of Information criteria BIC, AIC, RIC, RICc, EBIC with :
+#'  + d: stands for dense calculation,
+#'  + z: we count non zero values per directional mean and keep at least one parameter,
+#'  + v: we count the variables with at least one non zero coordinate on a directional mean.
+#'  * sparsity: sparsity of mu.
 
 #' @export
 

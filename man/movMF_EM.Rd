@@ -47,7 +47,7 @@ movMF_EM(
 
 \item{sk_runs}{Number of runs for the initialization for skmeans.}
 
-\item{save_tau}{Save tau.}
+\item{save_tau}{Save responsibilities Tau.}
 
 \item{hard_assign}{Hard assignment.}
 
@@ -56,12 +56,46 @@ movMF_EM(
 \value{
 returns a list including the following attributes:
 \itemize{
-\item theta: mu times kappa.
-\item kappa : kappa
-\item L: log likelihood.
-\item alpha: a vector of cluster proportions.
-\item iter: the total number of iteration needed for convergence.
-\item Prob: matrix of probability to be in a cluster
+\item mu: directional means.
+\item alpha: mixture proportions.
+\item kappa: concentration parameters.
+\item Tau: responsibilities.
+\item shared_kappa: TRUE if the model shares kappa.
+\item beta: penalty parameter.
+\item logL: Log-likelihood.
+\item fpiter: fix point iterations.
+\item iter: iterations.
+\item logLikelihood: best LogLikelihood.
+\item penLogLikelihood: best penalized LogLikelihood.
+\item completeLogLikelihood: best complete LogLikelihood.
+\item status:
+}
+\itemize{
+\item 0: converged,
+\item 1: maxiter reached,
+\item 2: not converging to a K cluster solution,
+\item 3: infinite variance.
+}
+\itemize{
+\item n: number of rows of X.
+\item cluster: hard assignment.
+\item converged: nb of status converged.
+\item infinite: nb of status infinite.
+\item empty: nb of status not converging to a K cluster solution.
+\item itermax:
+\item total_iterations:
+\item total_internal_iterations:
+\item all_logLikelihood:
+\item all_penLogLikelihood:
+\item IC: List of Information criteria BIC, AIC, RIC, RICc, EBIC with :
+}
+\itemize{
+\item d: stands for dense calculation,
+\item z: we count non zero values per directional mean and keep at least one parameter,
+\item v: we count the variables with at least one non zero coordinate on a directional mean.
+}
+\itemize{
+\item sparsity: sparsity of mu.
 }
 }
 \description{
