@@ -8,6 +8,6 @@ Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: GPL-2
 Encoding: UTF-8
-Imports: aricode,skmeans,wordspace,movMF,Matrix
+Imports: aricode,skmeans,wordspace,movMF,Matrix, ggplot2, tibble
 LazyData: true
 RoxygenNote: 7.1.1

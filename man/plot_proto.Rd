@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_prototypes.R
 \name{plot_proto}
 \alias{plot_proto}
-\title{Provides a function plot the directionales means of a mixture of von Mises-Fisher distribution.}
+\title{Provides a function to plot the directional means of a mixture of von Mises-Fisher distribution.}
 \usage{
 plot_proto(movMFresult, with_color = FALSE)
 }
@@ -15,5 +15,5 @@ plot_proto(movMFresult, with_color = FALSE)
 returns a plot of the directional means.
 }
 \description{
-Provides a function plot the directionales means of a mixture of von Mises-Fisher distribution.
+Provides a function to plot the directional means of a mixture of von Mises-Fisher distribution.
 }

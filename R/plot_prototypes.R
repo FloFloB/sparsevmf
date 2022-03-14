@@ -1,4 +1,4 @@
-#' Provides a function plot the directionales means of a mixture of von Mises-Fisher distribution.
+#' Provides a function to plot the directional means of a mixture of von Mises-Fisher distribution.
 #' @import ggplot2
 #' @import tibble
 #' @import Matrix
