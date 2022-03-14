@@ -23,7 +23,7 @@ movMF_EM(
 )
 }
 \arguments{
-\item{X}{Data : matrix with column as features}
+\item{X}{Data : matrix with column as features.}
 
 \item{K}{The number of mixture components (or clusters).}
 

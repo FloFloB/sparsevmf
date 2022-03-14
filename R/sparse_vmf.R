@@ -4,7 +4,7 @@
 #' @import aricode
 #' @import movMF
 #' @import Matrix
-#' @param X Data : matrix with column as features
+#' @param X Data : matrix with column as features.
 #' @param K The number of mixture components (or clusters).
 #' @param beta Penalty parameter.
 #' @param Theta Theta is the initial parameter list.
