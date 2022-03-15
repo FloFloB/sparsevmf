@@ -1,4 +1,7 @@
 #' Provides a function to plot the data set according to the result of a mixture of von Mises-Fisher distribution.
+#' @import ggplot2
+#' @import tibble
+#' @import Matrix
 #' @param movMFresul  results from the function movMF_EM.
 #' @param X dataset used by the function movMF_EM.
 #' @param with_color add colors to the plot.
