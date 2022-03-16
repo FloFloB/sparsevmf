@@ -9,6 +9,6 @@ Description: This package implements L1 norm penalization for von Mises-Fisher.
              and the likelihood one, we implement a path following algorithm.
 License: GPL-2
 Encoding: UTF-8
-Imports: aricode,skmeans,wordspace,movMF,Matrix,ggplot2,tibble
+Imports: aricode,skmeans,wordspace,movMF,Matrix,ggplot2,tibble,circular
 LazyData: true
 RoxygenNote: 7.1.2

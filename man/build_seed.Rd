@@ -2,7 +2,7 @@
 % Please edit documentation in R/seed_builder.R
 \name{build_seed}
 \alias{build_seed}
-\title{Provides a function to initialize from prototypes or from clusters a penalized mixtures of von Mises-Fisher.}
+\title{Provides a function to create seeds to have a fair comparison between algorithms.}
 \usage{
 build_seed(X, nb_run = 10, nb_init = 10, ks = 2:6)
 }
@@ -19,5 +19,5 @@ build_seed(X, nb_run = 10, nb_init = 10, ks = 2:6)
 returns a list of seed.
 }
 \description{
-Provides a function to initialize from prototypes or from clusters a penalized mixtures of von Mises-Fisher.
+Provides a function to create seeds to have a fair comparison between algorithms.
 }

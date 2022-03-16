@@ -58,7 +58,7 @@ seeds=build_seed(cstr_data,ks=ks,nb_run = nb_run,nb_init=nb_init)
 
 ## We keep the best configuration in terms of the quality criterion of each algorithm:
 
-cstr_seeds_current <- seeds[[ks]][[1]]
+cstr_seeds_current <- seeds[[ks]][[nb_run]]
 best_models <- list()
 for(h in 1:nrow(cstr_seeds_current)) {
   pId <- cstr_seeds_current[h,]
