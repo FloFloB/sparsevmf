@@ -6,7 +6,7 @@ Author: Florian Barbaro and Fabrice Rossi
 Maintainer: Florian Barbaro <Florian.Barbaro@etu.univ-paris1.fr>
 Description: This package implements L1 norm penalization for von Mises-Fisher.
              Moreover to explore the trade-off between the sparsity term
-             and the likelihood one with a simple path following algorithm.
+             and the likelihood one, we implement a path following algorithm.
 License: GPL-2
 Encoding: UTF-8
 Imports: aricode,skmeans,wordspace,movMF,Matrix,ggplot2,tibble

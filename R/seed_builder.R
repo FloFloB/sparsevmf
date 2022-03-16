@@ -1,4 +1,4 @@
-#' Provides a function to initialize from prototypes or from clusters a penalized mixtures of von Mises-Fisher.
+#' Provides a function to create seeds to have a fair comparison between algorithms.
 #' @import Matrix
 #' @param X Data : matrix with column as features.
 #' @param nb_run Number of runs.
