@@ -26,7 +26,7 @@ Functions available in the package are:
 * plot_data Provides a function to plot the data set according to the result of a mixture of von Mises-Fisher distribution.
 * plot_proto Provides a function to plot the directional means of a mixture of von Mises-Fisher distribution.
 
-First, load up your package with:
+First, load up the package with:
 ``` r
 library(sparsevmf)
 ```
