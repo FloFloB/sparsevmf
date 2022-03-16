@@ -31,13 +31,16 @@ First, load up your package with:
 library(sparsevmf)
 ```
 
-Example of use of the package functions for comparison with spherical k-means.
-
+Libraries needed for the following example :
 ``` r
 library(tibble)
 library(skmeans)
 library(Matrix)
+```
 
+Example of use of the package functions for comparison with spherical k-means.
+
+``` r
 ## Data for example
 cstr <- R.matlab::readMat("~/R_works/cstr.mat") # available here https://github.com/dbmovMFs/DirecCoclus/tree/master/Data
 
