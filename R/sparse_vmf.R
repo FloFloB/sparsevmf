@@ -162,8 +162,14 @@ movMF_EM <- function(X, K, beta, Theta=NULL, shared_kappa=FALSE, restart=NULL, m
   bestModel$total_internal_iterations <- total_internal_iter
   bestModel$all_logLikelihood <- all_logLikelihood
   bestModel$all_penLogLikelihood <- all_penLogLikelihood
-  ## TODO: this might break when the model did not converge
-  bestModel$IC <- movMF_IC(bestModel)
-  bestModel$sparsity <- movMF_nbzero(bestModel)/length(bestModel$mu)
+  if(bestModel$converged!=0) {
+    bestModel$IC <- movMF_IC(bestModel)
+    bestModel$sparsity <- movMF_nbzero(bestModel)/length(bestModel$mu)
+  }else{
+    bestModel$IC <- NULL
+    bestModel$sparsity <- NULL
+  }
+
+
   bestModel
 }
