@@ -90,6 +90,8 @@ for(h in 1:nrow(cstr_seeds_current)) {
     best_models[["movMF_shared"]] <- cstr_my_movMF_shared
   }
 }
+
+# Compare solution in terms of ARI and NMI
 one_run <- tibble(method=c("sk", "movMF",
                            "movMF_shared"),
                   criterion=c(best_models[["sk"]]$value,
