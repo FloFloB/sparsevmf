@@ -29,7 +29,7 @@ movMF_EM(
 
 \item{beta}{Penalty parameter.}
 
-\item{Theta}{Theta is the initial parameter list.}
+\item{Theta}{Theta is the initial parameter list (alpha, mu, kappa).}
 
 \item{shared_kappa}{If all components share kappa or not.}
 

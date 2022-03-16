@@ -31,7 +31,7 @@ movMF_beta_path(
 
 \item{K}{The number of mixture components (or clusters).}
 
-\item{Theta}{Theta is the initial parameter list.}
+\item{Theta}{Theta is the initial parameter list (alpha, mu, kappa).}
 
 \item{shared_kappa}{If all components share kappa or not.}
 

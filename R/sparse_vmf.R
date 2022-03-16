@@ -7,7 +7,7 @@
 #' @param X Data : matrix with column as features.
 #' @param K The number of mixture components (or clusters).
 #' @param beta Penalty parameter.
-#' @param Theta Theta is the initial parameter list.
+#' @param Theta Theta is the initial parameter list (alpha, mu, kappa).
 #' @param shared_kappa If all components share kappa or not.
 #' @param restart Number of restart.
 #' @param maxiter The maximum number of iteration.
