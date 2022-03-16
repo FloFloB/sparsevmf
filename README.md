@@ -108,3 +108,26 @@ for(j in 1:3) {
 }
 
 ```
+
+Example of the path following approach starting from the best model with shared kappa:
+
+``` r
+cstr_path <- movMF_beta_path(cstr_data, K=ks,
+                            Theta = best_models[["movMF_shared"]],
+                            shared_kappa=TRUE,
+                            min_rel_inc=0.01,
+                            nb_beta=1000, save_path="statistics", verbose=1)
+```
+
+Plotting the model's directional means selected by RICc:
+
+``` r
+plot_proto(cstr_path$best_IC$models$zRICc,with_color = TRUE)
+```
+
+Plotting the data as the model's directional means selected by RICc:
+
+``` r
+plot_data(cstr_path$best_IC$models$zRICc,cstr_data,with_color = TRUE)
+```
+
