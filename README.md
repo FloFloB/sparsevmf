@@ -47,7 +47,7 @@ cstr <- R.matlab::readMat("~/R_works/cstr.mat") # available here https://github.
 ## Normalize data
 cstr_data <- wordspace::normalize.rows(Matrix::Matrix(cstr$fea, sparse=TRUE))
 
-## Improve representation of label
+## Improve representation of cluster
 cstr$gnd=cstr$gnd[,1]
 
 ## Build seed. For this example, only 1 run with 10 init with ks = 4
