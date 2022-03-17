@@ -7,6 +7,8 @@ This package implements L1 norm penalization for von Mises-Fisher distribution. 
 
 Mathematical explanation for the penalization of von Mises-Fisher distribution will be soon available.
 
+## Functions available
+
 Functions available in the package are:
 * random_movMF Provides a function to produce a random movMF model with controlled separation between the clusters. 
 * movMF_EM Provides a function to build and fit a penalized mixtures of von Mises-Fisher.
