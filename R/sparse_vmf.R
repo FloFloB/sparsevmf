@@ -60,8 +60,43 @@ movMF_EM <- function(X, K, beta, Theta=NULL, shared_kappa=FALSE, restart=NULL, m
                      prec=sqrt(.Machine$double.eps), kappamax=1e6,
                      mode="random", sk_runs=1, save_tau=TRUE,
                      hard_assign=TRUE, verbose=0) {
+
+  # Control parameters
   if(!is.null(Theta) & !is.null(restart)) {
     stop("Incompatible options")
+  }
+  if(K>=nrow(X)){
+    stop("More clusters than distinc samples (rows)")
+  }
+  if(!is.logical(shared_kappa)){
+    stop("shared_kappa must be a boolean")
+  }
+  if(!is.logical(save_tau)){
+    stop("save_tau must be a boolean")
+  }
+  if(!is.logical(hard_assign)){
+    stop("hard_assign must be a boolean")
+  }
+  if(!mode %in% c("random", "spread", "skmeans")){
+    stop("mode must be choosed between random, spread or skmeans")
+  }
+  if(!is.numeric(sk_runs) || sk_runs<1){
+    stop("sk_runs must be numeric and at least equal to 1")
+  }
+  if(!is.numeric(maxiter) || maxiter<1){
+    stop("maxiter must be numeric and at least equal to 1")
+  }
+  if(!is.numeric(maxiter) || maxiter<1){
+    stop("maxiter must be numeric and at least equal to 1")
+  }
+  if(!is.numeric(prec) || prec<0){
+    stop("prec must be numeric and greater than 0")
+  }
+  if(!is.numeric(kappamax) || kappamax<0){
+    stop("kappamax must be numeric and greater than 0")
+  }
+  if(!is.numeric(beta) || beta<0){
+    stop("beta must be numeric and greater than 0")
   }
   verbose <- as.integer(verbose)
   if(is.null(Theta)) {

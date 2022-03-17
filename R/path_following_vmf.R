@@ -41,7 +41,52 @@ movMF_beta_path <- function(X, K, Theta=NULL, shared_kappa=FALSE, restart=NULL,
                             verbose=0) {
   save_path <- match.arg(save_path)
   verbose <- as.integer(verbose)
-  ##TODO: implement parameter checks
+  if(!is.null(Theta) & !is.null(restart)) {
+    stop("Incompatible options")
+  }
+  if(K>=nrow(X)){
+    stop("More clusters than distinc samples (rows)")
+  }
+  if(!is.logical(shared_kappa)){
+    stop("shared_kappa must be a boolean")
+  }
+  if(!is.logical(save_tau)){
+    stop("save_tau must be a boolean")
+  }
+  if(!is.logical(hard_assign)){
+    stop("hard_assign must be a boolean")
+  }
+  if(!mode %in% c("random", "spread", "skmeans")){
+    stop("mode must be choosed between random, spread or skmeans")
+  }
+  if(!save_path %in% c("full", "statistics", "nothing")){
+    stop("save_path must be choosed between full, statistics or nothing")
+  }
+  if(!is.numeric(sk_runs) || sk_runs<1){
+    stop("sk_runs must be numeric and at least equal to 1")
+  }
+  if(!is.numeric(maxiter) || maxiter<1){
+    stop("maxiter must be numeric and at least equal to 1")
+  }
+  if(!is.numeric(maxiter) || maxiter<1){
+    stop("maxiter must be numeric and at least equal to 1")
+  }
+  if(!is.numeric(prec) || prec<0){
+    stop("prec must be numeric and greater than 0")
+  }
+  if(!is.numeric(kappamax) || kappamax<0){
+    stop("kappamax must be numeric and greater than 0")
+  }
+  if(!is.numeric(interpolate) || interpolate<1){
+    stop("interpolate must be numeric and at least equal to 1")
+  }
+  if(!is.numeric( min_rel_inc) ||  min_rel_inc<0){
+    stop("min_rel_inc must be numeric and greater or equal to 0")
+  }
+  if(!is.numeric(beta) || beta<0){
+    stop("beta must be numeric and greater than 0")
+  }
+
   ## initial configuration
   if(verbose > 0) {
     cat("Initial configuration\n")
