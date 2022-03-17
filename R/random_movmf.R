@@ -26,6 +26,18 @@
 random_movMF <- function(n, d, K, alpha=rep(1/K,K), kappa=NULL,
                          separation=0.05, oversample=20, sparsify_mu=0,
                          verbose=FALSE) {
+
+  # Check parameters
+  if(!is.numeric(n) || n<2){
+    stop("n must be numeric and at least equal to 2")
+  }
+  if(!is.numeric(d) || d<1){
+    stop("d must be numeric and at least equal to 1")
+  }
+  if(K>=n){
+    stop("More clusters than distinc samples (rows)")
+  }
+
   centers <- random_hsphere(K*oversample, d)
   prototypes <- spread_subset(centers, K)
   mu <- centers[prototypes$idx,]
