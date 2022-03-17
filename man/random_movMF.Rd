@@ -2,7 +2,7 @@
 % Please edit documentation in R/random_movmf.R
 \name{random_movMF}
 \alias{random_movMF}
-\title{Provides a function to initialize from prototypes or from clusters a penalized mixtures of von Mises-Fisher.}
+\title{Provides a function to produce a random movMF model with controlled separation between the clusters.}
 \usage{
 random_movMF(
   n,
@@ -23,7 +23,7 @@ random_movMF(
 
 \item{K}{Number of components.}
 
-\item{alpha}{Mixture proportions.}
+\item{alpha}{Mixture proportions (by default same proportion).}
 
 \item{kappa}{Value(s) of kappa.}
 
@@ -49,5 +49,5 @@ returns a list including the following attributes:
 }
 }
 \description{
-Provides a function to initialize from prototypes or from clusters a penalized mixtures of von Mises-Fisher.
+Provides a function to produce a random movMF model with controlled separation between the clusters.
 }

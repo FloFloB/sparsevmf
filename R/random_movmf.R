@@ -1,11 +1,11 @@
-#' Provides a function to initialize from prototypes or from clusters a penalized mixtures of von Mises-Fisher.
+#' Provides a function to produce a random movMF model with controlled separation between the clusters.
 #' @import wordspace
 #' @import movMF
 #' @import circular
 #' @param n Number of samples.
 #' @param d Dimension of samples.
 #' @param K Number of components.
-#' @param alpha Mixture proportions.
+#' @param alpha Mixture proportions (by default same proportion).
 #' @param kappa Value(s) of kappa.
 #' @param separation Separation between components.
 #' @param oversample Sample to extract well separated vectors.

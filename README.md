@@ -7,6 +7,15 @@ This package implements L1 norm penalization for von Mises-Fisher distribution. 
 
 Mathematical explanation for the penalization of von Mises-Fisher distribution will be soon available.
 
+Functions available in the package are:
+* random_movMF Provides a function to produce a random movMF model with controlled separation between the clusters. 
+* movMF_EM Provides a function to build and fit a penalized mixtures of von Mises-Fisher.
+* movMF_beta_path Provides a function  the trade-off between the sparsity term and the likelihood one with a simple path following algorithm.
+* movMF_initialisation_internal Provides a function to initialize from prototypes or from clusters a penalized mixtures of von Mises-Fisher.
+* build_seed Provides a function to create seeds to have a fair comparison between algorithms.
+* plot_data Provides a function to plot the data set according to the result of a mixture of von Mises-Fisher distribution.
+* plot_proto Provides a function to plot the directional means of a mixture of von Mises-Fisher distribution.
+
 ## Installation
 
 You can install the released version of sparsevmf from [GitHub](https://github.com/FloFloB/sparsevmf) with:
@@ -17,19 +26,43 @@ devtools::install_github("FloFloB/sparsevmf")
 
 ## Example
 
-Functions available in the package are:
-
-* movMF_EM Provides a function to build and fit a penalized mixtures of von Mises-Fisher.
-* movMF_beta_path Provides a function  the trade-off between the sparsity term and the likelihood one with a simple path following algorithm.
-* movMF_initialisation_internal Provides a function to initialize from prototypes or from clusters a penalized mixtures of von Mises-Fisher.
-* build_seed Provides a function to create seeds to have a fair comparison between algorithms.
-* plot_data Provides a function to plot the data set according to the result of a mixture of von Mises-Fisher distribution.
-* plot_proto Provides a function to plot the directional means of a mixture of von Mises-Fisher distribution.
 
 First, load up the package with:
 ``` r
 library(sparsevmf)
 ```
+
+### Simple example on simulated data
+
+Simple example of the use of the package:
+
+``` r
+# Generate a model with 30 samples of dimension 2 with 3 clusters with same proportion and different kappa
+random_model=random_movMF(n=30,d=2,K=3)
+
+# Train a movMF on this model
+model_vmf=movMF(X=random_model$X,K=3,beta=0,Theta = random_model)
+
+# Compare results
+aricode::ARI(model_vmf$cluster, random_model$membership)
+
+# Apply the path following algorithm
+random_path <- movMF_beta_path(random_model$X, K=3,
+                             Theta = random_model,
+                             shared_kappa=FALSE,
+                             min_rel_inc=0.0001,
+                             nb_beta=10, save_path="statistics", verbose=1)
+
+# Plot prototype of the selected model by information criteria, we take here RIC
+plot_proto(random_path$best_IC$models$zRIC)
+
+# Plot data as the prototype
+plot_data(random_path$best_IC$models$zRIC,random_model$X)
+
+
+```
+
+### Full example on real data (CSTR dataset)
 
 Libraries needed for the following example :
 ``` r
