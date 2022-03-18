@@ -43,7 +43,7 @@ Simple example of the use of the package:
 random_model=random_movMF(n=30,d=2,K=3)
 
 # Train a movMF on this model
-model_vmf=movMF(X=random_model$X,K=3,beta=0,Theta = random_model)
+model_vmf=movMF_EM(X=random_model$X,K=3,beta=0,Theta = random_model)
 
 # Compare results
 aricode::ARI(model_vmf$cluster, random_model$membership)

@@ -83,9 +83,7 @@ movMF_beta_path <- function(X, K, Theta=NULL, shared_kappa=FALSE, restart=NULL,
   if(!is.numeric( min_rel_inc) ||  min_rel_inc<0){
     stop("min_rel_inc must be numeric and greater or equal to 0")
   }
-  if(!is.numeric(beta) || beta<0){
-    stop("beta must be numeric and greater than 0")
-  }
+
 
   ## initial configuration
   if(verbose > 0) {
