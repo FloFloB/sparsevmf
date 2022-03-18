@@ -77,7 +77,7 @@ Example of use of the package functions for comparison with spherical k-means.
 
 ``` r
 ## Data for example
-cstr <- R.matlab::readMat("~/R_works/cstr.mat") # available here https://github.com/dbmovMFs/DirecCoclus/tree/master/Data
+cstr <- R.matlab::readMat("cstr.mat") # available here https://github.com/dbmovMFs/DirecCoclus/tree/master/Data
 
 ## Normalize data
 cstr_data <- wordspace::normalize.rows(Matrix::Matrix(cstr$fea, sparse=TRUE))
@@ -101,7 +101,7 @@ for(h in 1:nrow(cstr_seeds_current)) {
   pCluster <- apply(tcrossprod(cstr_data, pX), 1, which.max)
   
   # s-kmeans
-  cstr_sk <- skmeans(cstr_data, k=k,
+  cstr_sk <- skmeans(cstr_data, k=ks,
                      method="pclust",control=list(start=pCluster))
   if(is.null(best_models[["sk"]])) {
     best_models[["sk"]] <- cstr_sk
@@ -110,7 +110,7 @@ for(h in 1:nrow(cstr_seeds_current)) {
   }
   # movMF with non-shared kappa
    my_movMF_conf <- movMF_initialisation_internal(cstr_data, pX, pCluster, shared_kappa=FALSE)
-   cstr_my_movMF <- movMF_EM(cstr_data, K=k, beta=0, Theta=my_movMF_conf)
+   cstr_my_movMF <- movMF_EM(cstr_data, K=ks, beta=0, Theta=my_movMF_conf)
    if(is.null(best_models[["movMF"]])) {
      best_models[["movMF"]] <- cstr_my_movMF
    } else if(best_models[["movMF"]]$logLikelihood < cstr_my_movMF$logLikelihood) {
@@ -119,7 +119,7 @@ for(h in 1:nrow(cstr_seeds_current)) {
   
   # movMF with shared kappa
   my_movMF_conf_shared <- movMF_initialisation_internal(cstr_data, pX, pCluster, shared_kappa=TRUE)
-  cstr_my_movMF_shared <- movMF_EM(cstr_data, K=k, beta=0,
+  cstr_my_movMF_shared <- movMF_EM(cstr_data, K=ks, beta=0,
                                    Theta=my_movMF_conf_shared,
                                    shared_kappa=TRUE)
   if(is.null(best_models[["movMF_shared"]])) {
