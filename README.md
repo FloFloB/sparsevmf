@@ -142,6 +142,7 @@ for(j in 1:3) {
   one_run[j,4] <- aricode::NMI(best_models[[j]]$cluster, cstr$gnd)
 }
 
+print(one_run)
 ```
 
 Example of the path following approach starting from the best model with shared kappa:
