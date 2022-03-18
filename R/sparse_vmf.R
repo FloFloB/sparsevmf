@@ -66,7 +66,7 @@ movMF_EM <- function(X, K, beta, Theta=NULL, shared_kappa=FALSE, restart=NULL, m
     stop("Incompatible options")
   }
   if(K>=nrow(X)){
-    stop("More clusters than distinc samples (rows)")
+    stop("More clusters than distinct samples (rows)")
   }
   if(!is.logical(shared_kappa)){
     stop("shared_kappa must be a boolean")

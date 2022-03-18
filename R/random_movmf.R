@@ -35,7 +35,7 @@ random_movMF <- function(n, d, K, alpha=rep(1/K,K), kappa=NULL,
     stop("d must be numeric and at least equal to 1")
   }
   if(K>=n){
-    stop("More clusters than distinc samples (rows)")
+    stop("More clusters than distinct samples (rows)")
   }
 
   centers <- random_hsphere(K*oversample, d)
