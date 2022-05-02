@@ -158,7 +158,7 @@ cstr_path <- movMF_beta_path(cstr_data, K=ks,
 Plotting the model's directional means selected by RICc:
 
 ``` r
-plot_proto(cstr_path$best_IC$models$zRICc,with_color = TRUE)
+plot_proto(cstr_path$best_IC$models$zRICc,with_color = TRUE,map_values=function(x) sqrt(abs(x)))
 ```
 
 Plotting the data as the model's directional means selected by RICc:

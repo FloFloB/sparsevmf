@@ -7,7 +7,7 @@ order_proto <- function(proto, prec=sqrt(.Machine$double.eps)) {
   proto_bin <- ifelse(as.matrix(abs(proto))<prec,0,1)
   order_bin <- order(decreasing=T, colSums(proto_bin),
                      apply(proto_bin,2,paste,collapse=''),colSums(abs(proto)))
-  change_index <- firstIndex(colSums(proto_bin)[order_bin])
+  change_index <- firstIndex(colSums(proto_bin)[order_bin])-1
   change_index[1] <-0
   change_index[length(change_index)+1] <-length(order_bin)
   list(order_bin=order_bin,change_index=change_index)
@@ -15,7 +15,7 @@ order_proto <- function(proto, prec=sqrt(.Machine$double.eps)) {
 
 plot_mat <- function(positions, cs=NULL, change_index=NULL) {
   plt <- ggplot(positions, aes(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax,fill=value)) +
-    geom_rect()+ scale_fill_gradient(low="white",high="black") +
+    geom_rect()+ scale_fill_gradient(low="white",high="black",limits=c(0,1)) +
     theme(legend.position = "none",
           axis.text  = element_blank(),
           panel.grid = element_blank(),

@@ -4,6 +4,7 @@
 #' @import Matrix
 #' @param movMFresul  results from the function movMF_EM.
 #' @param with_color add colors to the plot.
+#' @param map_value a function to transform the value of representation
 #' @md
 #' @return returns a plot of the directional means.
 #'
@@ -12,7 +13,7 @@
 
 
 
-plot_proto <- function(movMFresult, with_color=FALSE) {
+plot_proto <- function(movMFresult, with_color=FALSE, map_values=NULL) {
   class_order <- order(movMFresult$alpha)
   proto_pre_order <- order_proto(movMFresult$mu[class_order,])
   proto_order <- proto_pre_order$order_bin
@@ -27,6 +28,9 @@ plot_proto <- function(movMFresult, with_color=FALSE) {
                      expand.grid(xmax=xmaxs, ymax=ymaxs))
   positions$value <-
     as.vector(t(as.matrix(movMFresult$mu[class_order,proto_order])))
+  if(!is.null(map_values)) {
+    positions$value <- map_values(positions$value)
+  }
   if(with_color) {
     plot_mat(positions, cs, proto_pre_order$change_index/length(xmins))
   } else {

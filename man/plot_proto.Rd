@@ -4,12 +4,14 @@
 \alias{plot_proto}
 \title{Provides a function to plot the directional means of a mixture of von Mises-Fisher distribution.}
 \usage{
-plot_proto(movMFresult, with_color = FALSE)
+plot_proto(movMFresult, with_color = FALSE, map_values = NULL)
 }
 \arguments{
 \item{with_color}{add colors to the plot.}
 
 \item{movMFresul}{results from the function movMF_EM.}
+
+\item{map_value}{a function to transform the value of representation}
 }
 \value{
 returns a plot of the directional means.
