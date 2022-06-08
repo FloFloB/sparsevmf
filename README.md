@@ -5,7 +5,7 @@
 
 This package implements L1 norm penalization for von Mises-Fisher distribution. Moreover to explore the trade-off between the sparsity term            and the likelihood one, we implement a path following algorithm.
 
-Mathematical explanation for the penalization of von Mises-Fisher distribution will be soon available.
+Mathematical explanation for the penalization of von Mises-Fisher distribution is available [here](https://doi.org/10.1016/j.neucom.2022.05.118).
 
 ## Functions available
 
